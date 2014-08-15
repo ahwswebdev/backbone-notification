@@ -7,24 +7,32 @@
 
 		options: {
 			sticky: false,
+			stickyOptions: {},
 			duration: 3000,
+			animationDuration: 700,
 			container: $('body')
 		},
 
-		events: {
-		},
 
 		initialize: function (options) {
-			_.bindAll(this, 'hide', 'show', '_setTimeoutEvents', '_setTimeout', '_clearTimeout');
+			_.bindAll(this,
+				'hide', 'show',
+				'_onAnimationShowEnd', '_onAnimationHideEnd',
+				'_setTimeoutEvents', '_setTimeout', '_clearTimeout'
+			);
 
 			$.extend(this.options, options);
 			this.render();
 
-			this.options.container.append(this.$el);
+			this.options.container.prepend(this.$el);
 
 			if( this.options.duration > 0 ) {
 				this._setTimeoutEvents();
 				this._setTimeout();
+			}
+
+			if( this.options.sticky === true ) {
+				this._setWaypointEvents();
 			}
 
 			this.show();
@@ -36,25 +44,47 @@
 		},
 
 		show: function () {
-			this.$el.removeClass('notification__hidden');
+			this.$el.fadeIn(this.options.anitionDuration, this._onAnimationShowEnd);
 		},
 
 		hide: function() {
-			this.$el.addClass('notification__hidden');
 			this._clearTimeout();
-			this.close();
+			this.$el.fadeOut(this.options.anitionDuration, this._onAnimationHideEnd);
 		},
 
 		/**
-		 * On close kill events, kill timeout and remove the appended el
+		 * On close cleanup backbone view properly
 		 */
 		close: function() {
+			this._unsetWaypointEvents();
 			this._unsetTimeoutEvents();
 			this._clearTimeout();
 			this.remove();
       		return this;
 		},
 
+		/**
+		 * Round of handling some events when ready animating
+		 */
+		_onAnimationShowEnd: function() {
+			this.$el.removeClass('notification__hidden');
+		},
+
+		_onAnimationHideEnd: function() {
+			this.$el.addClass('notification__hidden');
+			this.close();
+		},
+
+		// TODO: place in mixins??
+		_setWaypointEvents: function() {
+			this.$el.waypoint('sticky', this.options.stickyOptions);
+		},
+
+		_unsetWaypointEvents: function() {
+			if( _.has(this.$el, 'waypoint') ) {
+				this.$el.waypoint('unsticky');
+			}
+		},
 
 
 		// TODO: place in mixins??

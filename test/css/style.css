@@ -1,0 +1,44 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	padding: 10px;
+	font-family: Arial, Verdana, sans-serif;
+}
+
+h1 {
+	text-align: center;
+}
+
+#content {
+	width: 70%;
+	margin: 0 auto;
+}
+
+.stuck {
+	position: fixed;
+}
+
+
+.notification {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 250px;
+	background: #FFF7B6;
+	padding: 20px;
+	margin: 0 auto 20px auto;
+}
+
+.notification.stuck {
+	margin-left: -125px;
+	left: 50%;
+	top: 20px; // mandatory
+}
+
+.notification__hidden {
+	display: none;
+}
+
