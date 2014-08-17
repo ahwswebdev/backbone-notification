@@ -28,11 +28,6 @@
 
 			this.options.container.prepend(this.$el);
 
-			if( this.options.duration > 0 ) {
-				this._setTimeoutEvents();
-				this._setTimeout();
-			}
-
 			if( this.options.sticky === true ) {
 				this._setWaypointEvents();
 			}
@@ -49,6 +44,7 @@
 			TweenLite.to(this.$el, this.options.animationDuration, {
 				alpha: 1,
 				display: 'block',
+				ease: Cubic.easeInOut,
 				onComplete: this._onAnimationShowEnd
 			});
 		},
@@ -58,6 +54,7 @@
 			TweenLite.to(this.$el, this.options.animationDuration, {
 				alpha: 0,
 				display: 'none',
+				ease: Cubic.easeInOut,
 				onComplete: this._onAnimationHideEnd
 			});
 		},
@@ -79,6 +76,12 @@
 		_onAnimationShowEnd: function() {
 			this.$el.removeClass('notification__hidden');
 			this.$el.addClass('notification__show');
+
+			// Attach timeout events when ready animating in
+			if( this.options.duration > 0 ) {
+				this._setTimeoutEvents();
+				this._setTimeout();
+			}
 		},
 
 		_onAnimationHideEnd: function() {
