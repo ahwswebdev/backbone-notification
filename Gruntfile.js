@@ -13,7 +13,8 @@ module.exports = function(grunt) {
 		jshint: {
 			all: ['js/**/*'],
 			options: {
-				force: true
+				force: true,
+				jshintrc: true
 			}
 		},
 
@@ -62,5 +63,6 @@ module.exports = function(grunt) {
 
 
 	grunt.registerTask('default', ['connect', 'watch']);
+	grunt.registerTask('build', ['jshint', 'concat:dist', 'uglify:dist'])
 
 };

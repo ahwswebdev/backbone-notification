@@ -1,4 +1,5 @@
 (function (window, $, _, Backbone) {
+	'use strict';
 
 	var NotificationView = Backbone.View.extend({
 
@@ -69,9 +70,11 @@
 		 */
 		_onAnimationShowEnd: function() {
 			this.$el.removeClass('notification__hidden');
+			this.$el.addClass('notification__show');
 		},
 
 		_onAnimationHideEnd: function() {
+			this.$el.removeClass('notification__show');
 			this.$el.addClass('notification__hidden');
 			this.close();
 		},

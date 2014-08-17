@@ -10,8 +10,6 @@
     "grunt-contrib-watch": "~0.6.1",
     "grunt-contrib-uglify": "~0.5.0",
     "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-copy": "~0.5.0",
-    "grunt-contrib-clean": "~0.5.0",
     "time-grunt": "~0.3.2",
     "load-grunt-tasks": "~0.6.0",
     "grunt-contrib-connect": "~0.8.0"
@@ -19,5 +17,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jjanssen/backbone-notification.git"
+  },
+  "scripts": {
+    "build": "npm install && grunt build",
+    "postinstall": "grunt build"
   }
 }
