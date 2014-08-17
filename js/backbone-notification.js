@@ -1,4 +1,4 @@
-(function (window, $, _, Backbone) {
+(function (window, $, _, Backbone, TweenLite) {
 	'use strict';
 
 	var NotificationView = Backbone.View.extend({
@@ -10,7 +10,7 @@
 			sticky: false,
 			stickyOptions: {},
 			duration: 3000,
-			animationDuration: 700,
+			animationDuration: 0.7,
 			container: $('body'),
 			template: _.template('<p>Please define a template in the passing options</p>')
 		},
@@ -46,12 +46,20 @@
 		},
 
 		show: function () {
-			this.$el.fadeIn(this.options.anitionDuration, this._onAnimationShowEnd);
+			TweenLite.to(this.$el, this.options.animationDuration, {
+				alpha: 1,
+				display: 'block',
+				onComplete: this._onAnimationShowEnd
+			});
 		},
 
 		hide: function() {
 			this._clearTimeout();
-			this.$el.fadeOut(this.options.anitionDuration, this._onAnimationHideEnd);
+			TweenLite.to(this.$el, this.options.animationDuration, {
+				alpha: 0,
+				display: 'none',
+				onComplete: this._onAnimationHideEnd
+			});
 		},
 
 		/**
@@ -131,4 +139,4 @@
 
 	window.NotificationView = NotificationView;
 
-}(window, jQuery, _, Backbone));
+}(window, jQuery, _, Backbone, TweenLite));

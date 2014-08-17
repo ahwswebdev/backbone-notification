@@ -14,7 +14,6 @@
 	"quotmark": "single",
 	"undef": true,
 	"unused": true,
-	"maxparams": 4,
 	"maxlen": 180,
 	"maxdepth": 3,
 	"maxstatements": 15,

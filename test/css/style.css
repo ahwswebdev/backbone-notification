@@ -26,6 +26,7 @@ h1 {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+	opacity: 0;
 	width: 250px;
 	background: #FFF7B6;
 	padding: 20px;

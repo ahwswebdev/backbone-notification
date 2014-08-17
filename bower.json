@@ -3,6 +3,7 @@
   "dependencies": {
     "jquery": "1.11.1",
     "backbone": "1.1.2",
-    "jquery-waypoints": "2.0.5"
+    "jquery-waypoints": "2.0.5",
+    "gsap": "1.13.1"
   }
 }

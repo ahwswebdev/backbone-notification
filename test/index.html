@@ -41,11 +41,14 @@
         <script src="../bower_components/jquery-waypoints/shortcuts/sticky-elements/waypoints-sticky.min.js"></script>
         <script src="../bower_components/underscore/underscore.js"></script>
         <script src="../bower_components/backbone/backbone.js"></script>
+        <script src="../bower_components/gsap/src/minified/plugins/CSSPlugin.min.js"></script>
+        <script src="../bower_components/gsap/src/minified/easing/EasePack.min.js"></script>
+        <script src="../bower_components/gsap/src/minified/TweenLite.min.js"></script>
         <script src="../js/backbone-notification.js"></script>
         <script>
             var notification = new NotificationView({
-                duration: 4000,
-                animationDuration: 700,
+                duration: 8000,
+                animationDuration: 1.5,
                 sticky: true,
                 container: $('#notifier-container')
             });
