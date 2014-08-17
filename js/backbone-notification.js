@@ -10,7 +10,8 @@
 			stickyOptions: {},
 			duration: 3000,
 			animationDuration: 700,
-			container: $('body')
+			container: $('body'),
+			template: _.template('<p>Please define a template in the passing options</p>')
 		},
 
 
@@ -39,7 +40,7 @@
 		},
 
 		render: function() {
-			this.$el.html("<p>Hello world</p>");
+			this.$el.html(this.options.template);
 			return this;
 		},
 
@@ -75,19 +76,20 @@
 			this.close();
 		},
 
-		// TODO: place in mixins??
+
+		/**
+		 * Waypoint event handling
+		 */
 		_setWaypointEvents: function() {
 			this.$el.waypoint('sticky', this.options.stickyOptions);
 		},
 
 		_unsetWaypointEvents: function() {
-			if( _.has(this.$el, 'waypoint') ) {
+			if( typeof this.$el.waypoint === 'function' ) {
 				this.$el.waypoint('unsticky');
 			}
 		},
 
-
-		// TODO: place in mixins??
 		/**
 		 * Bind the approriate mouse events handlers to the notification element
 		 */
