@@ -7,6 +7,7 @@
 		className: 'notification notification__hidden',
 
 		options: {
+			cls: null,
 			sticky: false,
 			stickyOptions: {},
 			duration: 3000,
@@ -36,6 +37,10 @@
 		},
 
 		render: function() {
+			if( this.options.cls ) {
+				this.$el.attr('class', _.result(this, 'className') + ' ' + this.options.cls);
+			}
+
 			this.$el.html(this.options.template);
 			return this;
 		},
