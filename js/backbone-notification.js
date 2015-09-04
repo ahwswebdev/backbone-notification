@@ -103,6 +103,9 @@
 			this.$el.waypoint('sticky', this.options.stickyOptions);
 		},
 
+		/**
+		 * Waypoint event handling
+		 */
 		_unsetWaypointEvents: function() {
 			if( typeof this.$el.waypoint === 'function' ) {
 				this.$el.waypoint('unsticky');
