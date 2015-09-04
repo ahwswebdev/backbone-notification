@@ -106,6 +106,8 @@
 		_unsetWaypointEvents: function() {
 			if( typeof this.$el.waypoint === 'function' ) {
 				this.$el.waypoint('unsticky');
+			} else {
+				$('.notification.notification__hidden').waypoint('unsticky');
 			}
 		},
 
