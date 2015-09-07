@@ -71,7 +71,7 @@
 			this._unsetWaypointEvents();
 			this._unsetTimeoutEvents();
 			this._clearTimeout();
-			this.remove();
+			//this.remove();
       		return this;
 		},
 
@@ -109,8 +109,6 @@
 		_unsetWaypointEvents: function() {
 			if( this.$el && typeof this.$el.waypoint === 'function' ) {
 				this.$el.waypoint('unsticky');
-			} else {
-				$('.notification.notification__hidden').waypoint('unsticky');
 			}
 		},
 
