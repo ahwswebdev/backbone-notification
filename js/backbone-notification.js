@@ -71,6 +71,7 @@
 			this._unsetWaypointEvents();
 			this._unsetTimeoutEvents();
 			this._clearTimeout();
+			this.$el.remove();
 			//this.remove();
       		return this;
 		},
