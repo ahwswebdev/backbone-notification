@@ -1,6 +1,6 @@
 {
   "name": "backbone-notification",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "Backbone Notification",
   "contributors": ["Janneke Janssen <j.janssen@lukkien.com>"],
   "dependencies": {
